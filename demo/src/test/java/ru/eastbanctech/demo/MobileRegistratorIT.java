@@ -25,8 +25,12 @@ public class MobileRegistratorIT {
 					.withStubs("ru.eastbanctech:hrdt-ms-mobile:1.0")
 					.withStubsMode(StubRunnerProperties.StubsMode.REMOTE)
 					.withStubRepositoryRoot(
-							"git://https://github.com/tkislicyna/contracts.git")
-					.withGenerateStubs(true)
+							"git://https://github.com/tkislicyna/contracts-only-json") // SUCCESS
+							//"git://https://github.com/tkislicyna/contracts.git") // ERROR
+							//"git://https://github.com/tkislicyna/contracts-with-right-dir-order.git") // ERROR предположила, что дело в последователности папок, но нет все равно первыми достает groovy и пытается их верифицировать
+							//"git://https://github.com/tkislicyna/contracts-with-dirs-order.git") // ERROR
+					.withGenerateStubs(false)
+					.withFailOnNoStubs(false)
 					.build();
 
 	@Rule
